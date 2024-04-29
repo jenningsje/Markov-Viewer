@@ -12,44 +12,5 @@
 
     <!-- Include first ChemDoodleWeb package -->
     <script type="text/javascript" src="install/ChemDoodleWeb.js"></script>
-
-    <!-- load molecule into 3D viewer -->
-    <script>
-        try {
-            // print the PDB file to the Javascript variable
-            let pdbFile = 'lightdock_0.pdb';
-            // read the PDB data and store the returned Moleculedata structure as the variable, structure
-            let pdbStructure = ChemDoodle.readPDB(pdbFile);
-            
-            // Declare and initialize the Camera object
-            let camera = new ChemDoodle.structures.d3.Camera();
-            camera.fieldOfView = 45; // Set the field of view
-            
-            // Declare our 3D component and pass the Camera object
-            let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400, camera);
-            
-            // Set the 3D representation for ligand atoms
-            display3d.styles.set3DRepresentation('van der Waals Spheres');
-            
-            // Set the 3D representation for the protein and nucleic acid atoms and set them to be displayed
-            // First, create a new Styles object
-            let newSpecs = new ChemDoodle.structures.Styles();
-            // Display these atoms in wireframe
-            newSpecs.set3DRepresentation('Wireframe');
-            // Set the residueSpecs variable for the Canvas3D to bind it
-            display3d.residueSpecs = newSpecs;
-            
-            // Set the original styles to display the protein and nucleic acid atoms and bonds
-            display3d.styles.macro_displayAtoms = true;
-            display3d.styles.macro_displayBonds = true;
-            
-            // Load the molecule into the Canvas
-            display3d.loadMolecule(pdbStructure);
-        } catch (error) {
-            console.error('An error occurred:', error);
-            // Display an error message to the user
-            alert('An error occurred while loading the viewer. Please try again later.');
-        }
-    </script>
 </body>
 </html>
