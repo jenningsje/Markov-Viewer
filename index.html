@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="install/ChemDoodleWeb.css" type="text/css">
-        <script type="text/javascript" src="install/ChemDoodleWeb.js"></script>
-    </head>
-    <body>
-        <script>
-            try {
-                // print the PDB file to the Javascript variable
-                let pdbFile = 'lightdock_0.pdb';
-                // read the PDB data and store the returned Moleculedata structure as the variable, structure
-                let pdbStructure = ChemDoodle.readPDB(pdbFile);
-                // declare our 3D component
-                let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
-                // set the 3D representation for ligand atoms
-                display3d.styles.set3DRepresentation('van der Waals Spheres');
-                // set the 3D representation for the protein and nucleic acid atoms and set them to be displayed
-                // first, create a new Styles object
-                let newSpecs = new ChemDoodle.structures.Styles();
-            } catch (error) {
-                console.error("An error occurred:", error);
-            }
-        </script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>ChemDoodle Web Demo</title>
+    <!-- Include the ChemDoodle Web CSS -->
+    <link rel="stylesheet" href="https://web.chemdoodle.com/latest/ChemDoodleWeb.css">
+</head>
+<body>
+    <!-- Create a container for the 3D display -->
+    <div id="display3d" style="width: 400px; height: 400px;"></div>
+
+    <!-- Include the ChemDoodle Web JavaScript -->
+    <script src="https://web.chemdoodle.com/latest/ChemDoodleWeb.js"></script>
+
+    <script>
+        try {
+            // Print the PDB file to the JavaScript variable
+            let pdbFile = 'lightdock_0.pdb';
+            // Read the PDB data and store the returned Moleculedata structure as the variable, structure
+            let pdbStructure = ChemDoodle.readPDB(pdbFile);
+            // Declare our 3D component
+            let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
+            // Add the molecule to the 3D display
+            display3d.loadMolecule(pdbStructure);
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
+    </script>
+</body>
 </html>
