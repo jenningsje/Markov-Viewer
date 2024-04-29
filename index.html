@@ -6,10 +6,8 @@
     </head>
     <body>
         <script>
-            // print the PDB file to the Javascript variable
-            let pdbFile = ‘…’;
-            // read the PDB data and store the returned Moleculedata structure as the variable, structure
-            let pdbStructure = ChemDoodle.readPDB(pdbFile);
+            // we have our pdb structure loaded by one of the methods from above
+            let pdbStructure = 'lightdock_0.pdb';
             // declare our 3D component
             let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
             // set the 3D representation for ligand atoms
