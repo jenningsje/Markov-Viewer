@@ -1,7 +1,7 @@
-require('./install/ChemDoodleWeb.js')
 // Provide jQuery in the global scope
 global.jQuery = require('jquery');
-
+// require ChemDoodleWeb
+require('./install/ChemDoodleWeb.js')
 // print the PDB file to a JavaScript variable
 let pdbFile = 'lightdock_0.pdb';
 // read the PDB data and store the returned Molecule data structure as the variable, structure
