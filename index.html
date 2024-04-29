@@ -21,6 +21,13 @@
         let pdbStructure = ChemDoodle.readPDB(pdbFile);
         // declare our 3D component
         let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
+
+        // Function to be called after content is loaded
+        display3d.afterLoadContent = function() {
+            // Set the field of view after the content is loaded
+            display3d.fieldOfView = 45; // Set your desired field of view here
+        };
+
         // set the 3D representation for ligand atoms
         display3d.styles.set3DRepresentation('van der Waals Spheres');
         // set the 3D representation for the protein and nucleic acid atoms and set them to be displayed
