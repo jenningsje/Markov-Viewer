@@ -11,6 +11,8 @@
                 let pdbFile = 'lightdock_0.pdb';
                 // read the PDB data and store the returned Moleculedata structure as the variable, structure
                 let pdbStructure = ChemDoodle.readPDB(pdbFile);
+                // declare our 3D component
+                let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
             } catch (error) {
                 console.error("An error occurred:", error);
             }
