@@ -6,15 +6,11 @@
     </head>
     <body>
         <script>
-<<<<<<< HEAD
-            // we have our pdb structure loaded by one of the methods from above
-            let pdbStructure = 'lightdock_0.pdb';
-=======
-            // print the PDB file to the Javascript variable
+            try {
+                // print the PDB file to the Javascript variable
             let pdbFile = 'lightdock_0.pdb';
             // read the PDB data and store the returned Moleculedata structure as the variable, structure
             let pdbStructure = ChemDoodle.readPDB(pdbFile);
->>>>>>> a9ee0b11e07b44802e0930c15b6b843455bb4ceb
             // declare our 3D component
             let display3d = new ChemDoodle.TransformCanvas3D('display3d', 400, 400);
             // set the 3D representation for ligand atoms
@@ -31,6 +27,9 @@
             display3d.styles.macro_displayBonds = true;
             // load the molecule into the Canvas
             display3d.loadMolecule(pdbStructure);
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
         </script>
     </body>
 </html>
