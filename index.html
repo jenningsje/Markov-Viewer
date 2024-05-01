@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>ChemDoodle Web Demo</title>
-    <!-- Include the ChemDoodle Web CSS -->
-    <link rel="stylesheet" href="install/ChemDoodleWeb.css" type="text/css">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" href="install/ChemDoodleWeb.css" type="text/css">
+<script type="text/javascript" src="install/ChemDoodleWeb.js"></script>
+<title>3D ChemDoodle Web Component using WebGL : Interactive Cartoon Ribbon Model of 1CRN</title>
 </head>
 <body>
-    <!-- Create a container for the 3D display -->
-    <div id="display3d" style="width: 400px; height: 400px;"></div>
+<center>
+<input type="file" id="myFile">
+<button onclick="myFunction()">Try it</button>
 
-    <!-- Include first ChemDoodleWeb package -->
-    <script type="text/javascript" src="install/ChemDoodleWeb.js"></script>
+<script>
+function alertMolecule(mol) {
+    let message = 'This molecule contains ' + mol.atoms.length + ' atoms and ' + mol.bonds.length + ' bonds.';
+    alert(message);
+}
+
+function myFunction() {
+    let fileInput = document.getElementById("myFile");
+    let file = fileInput.files[0];
+    
+    if (file) {
+        let reader = new FileReader();
+        reader.onload = function(event) {
+            let fileContent = event.target.result;
+            // setup component
+            var ribbonTransformer = new ChemDoodle.TransformCanvas3D('ribbonTransformer', 400, 400);
+            // set the atom/bond representation to 'Stick', even though we will not show them
+            ribbonTransformer.styles.set3DRepresentation('Stick');
+            // do not show atoms
+            ribbonTransformer.styles.atoms_display = false;
+            // do not show bonds
+            ribbonTransformer.styles.bonds_display = false;
+            // render the ribbon as a cartoon model
+            ribbonTransformer.styles.proteins_ribbonCartoonize = true;
+            // set the background color to black
+            ribbonTransformer.styles.backgroundColor = '#000000';
+            var content = ChemDoodle.readPDB(fileContent);
+	    ribbonTransformer.loadMolecule(content);
+        };
+        reader.readAsText(file);
+    } else {
+        alert("Please select a file.");
+    }
+}
+</script>
+</center>
 </body>
 </html>
