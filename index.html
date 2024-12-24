@@ -4,12 +4,12 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" href="install/ChemDoodleWeb.css" type="text/css">
 <script type="text/javascript" src="install/ChemDoodleWeb.js"></script>
-<title>3D ChemDoodle Web Component using WebGL : Interactive Cartoon Ribbon Model of 1CRN</title>
+<title>3D ChemDoodle Web Component using WebGL</title>
 </head>
 <body>
 <center>
 <input type="file" id="myFile">
-<button onclick="myFunction()">Try it</button>
+<button onclick="myFunction()">Model</button>
 
 <script>
 function alertMolecule(mol) {
@@ -36,7 +36,7 @@ function myFunction() {
             // render the ribbon as a cartoon model
             ribbonTransformer.styles.proteins_ribbonCartoonize = true;
             // set the background color to black
-            ribbonTransformer.styles.backgroundColor = '#000000';
+            ribbonTransformer.styles.backgroundColor = '#3c3b3b';
             var content = ChemDoodle.readPDB(fileContent);
 	    ribbonTransformer.loadMolecule(content);
         };
